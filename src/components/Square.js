@@ -1,20 +1,23 @@
 import React from 'react';
 
-function Square(props) {
+const Square = props => {
   const winningSquareStyle = {
     backgroundColor: 'yellow'
   };
-  const { winningSquare, onClick, value } = props;
+  const whenToClick = square => {
+    return props.onClick(square);
+  };
+  const { winningSquare, id, value } = props;
   return (
     <button
       type="button"
       className="square"
       style={winningSquare ? winningSquareStyle : null}
-      onClick={onClick}
+      onClick={() => whenToClick(id)}
     >
       {value}
     </button>
   );
-}
+};
 
 export default Square;

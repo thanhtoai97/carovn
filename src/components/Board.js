@@ -1,67 +1,117 @@
-/* eslint-disable react/no-unused-state */
 import React from 'react';
 import Square from './Square';
 
+/*
+const Board = props => {
+  const { squares, xIsNext } = props;
+  return (
+    <div className="board-row">
+      {squares.map((value, square) => {
+        return (
+          <Square
+            key={square.id}
+            id={square}
+            className="square"
+            xIsNext={xIsNext}
+            value={squares[square]}
+            onClick={() => props.playerMove(square)}
+          />
+        );
+      })}
+    </div>
+  );
+};
+*/
+/*
 class Board extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      squares: Array(400).fill(null),
-      xIsNext: true
-    };
+  // Create the 3 x 3 board
+  createBoard(row, col) {
+    const board = [];
+    let cellCounter = 0;
+
+    for (let i = 0; i < row; i += 1) {
+      const columns = [];
+      for (let j = 0; j < col; j += 1) {
+        columns.push(this.renderSquare((cellCounter += 1)));
+      }
+      board.push(
+        <div key={i} className="board-row">
+          {columns}
+        </div>
+      );
+    }
+
+    return board;
   }
 
   renderSquare(i) {
-    const { winner, squares, onClick } = this.props;
-    const winningSquare = !!(winner && winner.includes(i));
+    const { squares, playerMove } = this.props;
     return (
       <Square
-        key={`square ${i}`}
+        className="square"
+        key={i}
         value={squares[i]}
-        onClick={() => onClick(i)}
-        winningSquare={winningSquare}
+        onClick={() => playerMove(i)}
       />
     );
   }
 
-  renderSquares(n) {
-    const squares = [];
-    for (let i = n; i < n + 20; i += 1) {
-      squares.push(this.renderSquare(i));
-    }
-    return squares;
-  }
-
-  renderRows(i) {
-    return <div className="board-row">{this.renderSquares(i)}</div>;
-  }
-
   render() {
-    return (
-      <div>
-        {this.renderRows(0)}
-        {this.renderRows(20)}
-        {this.renderRows(40)}
-        {this.renderRows(60)}
-        {this.renderRows(80)}
-        {this.renderRows(100)}
-        {this.renderRows(120)}
-        {this.renderRows(140)}
-        {this.renderRows(160)}
-        {this.renderRows(180)}
-        {this.renderRows(200)}
-        {this.renderRows(220)}
-        {this.renderRows(240)}
-        {this.renderRows(260)}
-        {this.renderRows(280)}
-        {this.renderRows(300)}
-        {this.renderRows(320)}
-        {this.renderRows(340)}
-        {this.renderRows(360)}
-        {this.renderRows(380)}
-      </div>
-    );
+    return <div>{this.createBoard(20, 20)}</div>;
   }
 }
+*/
+
+const Board = props => {
+  const renderSquare = move => {
+    const { winner, squares, playerMove } = props;
+    const winningSquare = !!(winner && winner.includes(move));
+    return (
+      <Square
+        key={`square ${move}`}
+        value={squares[move]}
+        onClick={() => playerMove(move)}
+        winningSquare={winningSquare}
+      />
+    );
+  };
+
+  const renderSquares = n => {
+    const squares = [];
+    for (let i = n; i < n + 20; i += 1) {
+      squares.push(renderSquare(i));
+    }
+    return squares;
+  };
+
+  const renderRows = i => {
+    return <div className="board-row">{renderSquares(i)}</div>;
+  };
+
+  return (
+    <div>
+      {renderRows(0)}
+      {renderRows(20)}
+      {renderRows(40)}
+      {renderRows(60)}
+      {renderRows(80)}
+      {renderRows(100)}
+      {renderRows(120)}
+      {renderRows(140)}
+      {renderRows(160)}
+      {renderRows(180)}
+      {renderRows(200)}
+      {renderRows(220)}
+      {renderRows(240)}
+      {renderRows(260)}
+      {renderRows(280)}
+      {renderRows(300)}
+      {renderRows(320)}
+      {renderRows(340)}
+      {renderRows(360)}
+      {renderRows(380)}
+    </div>
+  );
+};
 
 export default Board;
