@@ -37,13 +37,13 @@ export const gameReducer = (state = initialState, action) => {
     case 'PLAYER_MOVE':
       return {
         ...state,
-        history: action.historys.concat([
+        history: action.history.concat([
           {
             squares: action.squares
           }
         ]),
         currentBoard: action.squares,
-        stepNumber: action.historys.length,
+        stepNumber: action.history.length,
         xIsNext: !state.xIsNext
       };
       break;

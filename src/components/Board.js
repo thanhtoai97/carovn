@@ -1,9 +1,10 @@
+/* eslint-disable react/no-unused-state */
 import React from 'react';
 import Square from './Square';
 
 /*
 const Board = props => {
-  const { squares, xIsNext } = props;
+  const { squares, xIsNext, onClick } = props;
   return (
     <div className="board-row">
       {squares.map((value, square) => {
@@ -14,7 +15,7 @@ const Board = props => {
             className="square"
             xIsNext={xIsNext}
             value={squares[square]}
-            onClick={() => props.playerMove(square)}
+            onClick={() => onClick(square)}
           />
         );
       })}
@@ -22,6 +23,7 @@ const Board = props => {
   );
 };
 */
+
 /*
 class Board extends React.Component {
   // Create the 3 x 3 board
@@ -45,13 +47,13 @@ class Board extends React.Component {
   }
 
   renderSquare(i) {
-    const { squares, playerMove } = this.props;
+    const { squares, onClick } = this.props;
     return (
       <Square
         className="square"
         key={i}
         value={squares[i]}
-        onClick={() => playerMove(i)}
+        onClick={() => onClick(i)}
       />
     );
   }
@@ -64,13 +66,13 @@ class Board extends React.Component {
 
 const Board = props => {
   const renderSquare = move => {
-    const { winner, squares, playerMove } = props;
+    const { winner, squares, onClick } = props;
     const winningSquare = !!(winner && winner.includes(move));
     return (
       <Square
         key={`square ${move}`}
         value={squares[move]}
-        onClick={() => playerMove(move)}
+        onClick={() => onClick(move)}
         winningSquare={winningSquare}
       />
     );
