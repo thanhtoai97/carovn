@@ -8,10 +8,7 @@ export const initialState = {
   currentBoard: new Array(400).fill(null),
   stepNumber: 0,
   xIsNext: true,
-  isDescending: true,
-  timeTraveled: false,
-  showHistory: false,
-  endOfGame: false
+  isDescending: true
 };
 
 export const gameReducer = (state = initialState, action) => {
@@ -27,12 +24,11 @@ export const gameReducer = (state = initialState, action) => {
         currentBoard: new Array(400).fill(null),
         stepNumber: 0,
         xIsNext: true,
-        isDescending: true,
-        showHistory: false
+        isDescending: true
       };
       break;
     case 'END_GAME':
-      return { ...state, endOfGame: true };
+      return { ...state };
       break;
     case 'PLAYER_MOVE':
       return {
@@ -48,16 +44,13 @@ export const gameReducer = (state = initialState, action) => {
       };
       break;
     case 'TOGGLE_HISTORY':
-      return { ...state, showHistory: !state.showHistory };
+      return { ...state };
       break;
     case 'TIME_TRAVEL':
       return {
         ...state,
         stepNumber: action.move,
-        currentBoard: state.history[action.move].cells,
-        xIsNext: !(action.move % 2),
-        timeTraveled: true,
-        endOfGame: action.endOfGame
+        xIsNext: !(action.move % 2)
       };
       break;
     case 'SORT_HISTORY':

@@ -8,10 +8,18 @@ export const endGame = () => {
     type: 'END_GAME'
   };
 };
-export const playerMove = (historys, squares) => {
+export const playerMove = (history, squares) => {
   return {
     type: 'PLAYER_MOVE',
-    history: historys,
+    history,
+    squares
+  };
+};
+
+export const changeHistory = (history, squares) => {
+  return {
+    type: 'CHANGE_HISTORY',
+    history,
     squares
   };
 };
@@ -20,11 +28,10 @@ export const toggleHistory = () => {
     type: 'TOGGLE_HISTORY'
   };
 };
-export const timeTravel = (move, end) => {
+export const timeTravel = move => {
   return {
     type: 'TIME_TRAVEL',
-    move,
-    endOfGame: end
+    move
   };
 };
 export const sortHistory = isDecending => {

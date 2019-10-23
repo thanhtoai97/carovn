@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { render } from 'react-dom';
 import { HashRouter } from 'react-router-dom';
@@ -7,7 +8,7 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import './style/index.css';
-import Game from './containers/Game';
+import App from './containers/App';
 import * as serviceWorker from './serviceWorker';
 import allReducers from './reducers';
 
@@ -19,7 +20,7 @@ const store = createStore(
 render(
   <Provider store={store}>
     <HashRouter>
-      <Game />
+      <App />
     </HashRouter>
   </Provider>,
   document.getElementById('root')
