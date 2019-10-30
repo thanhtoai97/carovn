@@ -1,13 +1,11 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/prefer-stateless-function */
-
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-// import { bindActionCreators } from 'redux';
 import { Link, withRouter } from 'react-router-dom';
 
 import { newGame } from '../acctions/gameAction';
-import '../style/themes/light.css';
 
 class MainMenu extends Component {
   newGame() {
@@ -16,13 +14,14 @@ class MainMenu extends Component {
   }
 
   render() {
+    const { grid, newGame } = this.props;
     return (
       <div className="main_menu">
         <h2>Welcome to Tic Tac Toe!</h2>
         <Link to="/game">
           <button
             type="button"
-            onClick={() => newGame(400)}
+            onClick={() => newGame(grid)}
             className="menu_button"
           >
             Begin
@@ -39,13 +38,32 @@ class MainMenu extends Component {
             Login
           </button>
         </Link>
+        <Link to="/settings">
+          <button type="button" className="menu_button">
+            Settings
+          </button>
+        </Link>
       </div>
     );
   }
 }
 
-const matchDispatchToProps = dispatch => ({
-  newGame: () => dispatch(newGame())
+const mapStateToProps = state => ({
+  grid: state.game.grid
 });
 
-export default withRouter(connect(matchDispatchToProps)(MainMenu));
+const matchDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      newGame
+    },
+    dispatch
+  );
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    matchDispatchToProps
+  )(MainMenu)
+);

@@ -40,3 +40,14 @@ export const sortHistory = isDecending => {
     isDecending: !isDecending
   };
 };
+
+export const setGrid = grid => {
+  if (grid === 400) {
+    return {
+      type: 'SET_GRID_400'
+    };
+  }
+  return {
+    type: 'SET_GRID_9'
+  };
+};

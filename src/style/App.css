@@ -83,3 +83,113 @@ ul {
 .game-info {
   margin-left: 20px;
 }
+
+.settings_page {
+  animation: fade-in 1s forwards;
+}
+
+.left_col_settings {
+  width: 15%;
+  display: inline-block;
+  float: left;
+}
+
+.mid_col_settings {
+  width: 65%;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+.setting_value button {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 1%;
+  transition: 0.33s ease-out;
+  padding: 3%;
+  font-size: 1.2rem;
+}
+
+.setting_value button.selected {
+  color: #00c8c8;
+}
+
+.setting_value button.set_pace {
+  font-size: 1.7rem;
+}
+.set_pace:hover {
+  color: #00d7d7;
+}
+.shown {
+  animation: slide-in 0.5s forwards;
+}
+.hidden {
+  animation: slide-out 0.2s forwards;
+  visibility: hidden;
+}
+.hr_settings {
+  display: none;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-weight: 600;
+}
+
+td {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+.exit_settings {
+  float: right;
+}
+
+.exit_settings {
+  background-color: transparent;
+  margin: 40%;
+  padding: 5%;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 10px;
+  transition: 0.33s ease-out;
+}
+
+.exit_settings:hover {
+  box-shadow: 1px 1px 1px 1px #888888 inset;
+  color: #009292;
+}
+
+.menu_button {
+  animation: slide-in 0.75s forwards;
+  background-color: transparent;
+  border: none;
+  margin: 2%;
+  transition: 0.33s ease-out;
+  padding: 1%;
+  font-size: 2rem;
+  border-radius: 5px;
+}
+.menu_button:hover {
+  box-shadow: 1px 1px 1px 1px #888888 inset;
+  color: #00c8c8;
+}
+.main_menu {
+  animation: fade-in 1s forwards;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+#components-form-demo-normal-login .login-form {
+  max-width: 300px;
+}
+#components-form-demo-normal-login .login-form-forgot {
+  float: right;
+}
+#components-form-demo-normal-login .login-form-button {
+  width: 100%;
+}
