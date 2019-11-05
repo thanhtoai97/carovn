@@ -1,3 +1,5 @@
+@import '~antd/dist/antd.css';
+
 .App {
   text-align: center;
 }
@@ -83,7 +85,10 @@ ul {
 .game-info {
   margin-left: 20px;
 }
-
+.game-info1 {
+  margin-bottom: 5px;
+  margin-left: 11%;
+}
 .settings_page {
   animation: fade-in 1s forwards;
 }
@@ -182,14 +187,4 @@ button {
 
 button:focus {
   outline: none;
-}
-
-#components-form-demo-normal-login .login-form {
-  max-width: 300px;
-}
-#components-form-demo-normal-login .login-form-forgot {
-  float: right;
-}
-#components-form-demo-normal-login .login-form-button {
-  width: 100%;
 }

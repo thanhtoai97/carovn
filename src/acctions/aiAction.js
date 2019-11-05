@@ -1345,7 +1345,7 @@ export const getBestMove = (board, grid, xIsNext) => {
     let advantage;
     let priority = -1;
     if (moves.length === 400) {
-      const openers = [0, 3, 12, 15, 24];
+      const openers = [0, 3, 12, 15];
       openers.forEach(opener => {
         if (!board[opener]) {
           bestMove = opener;
@@ -1359,7 +1359,7 @@ export const getBestMove = (board, grid, xIsNext) => {
       advantage = streak.filter(cell => {
         return board[cell] === self;
       }).length;
-      const full = advantage + threat === 4;
+      const full = advantage + threat === 200;
       if (!full) {
         if (threat > advantage && threat > priority) {
           streak.forEach(cell => {
@@ -1407,7 +1407,11 @@ export const aiMove = (bestMove, board, difficulty) => {
     }
     console.log(`Easy Move: ${choice}`);
   } else if (difficulty === 'expert') {
-    choice = bestMove;
+    if (Math.random() * 100 <= 50) {
+      choice = bestMove;
+    } else {
+      choice = randomChoice;
+    }
     console.log(`expert Move: ${choice}`);
   }
   return choice;

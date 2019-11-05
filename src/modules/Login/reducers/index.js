@@ -1,7 +1,7 @@
 import * as ActionTypes from '../constants/actionsType';
 
 const defaultState = {
-  loggedInUser: null,
+  user: null,
   loading: true,
   error: null
 };
@@ -16,14 +16,14 @@ const authReducerLogin = (state = defaultState, action) => {
     case ActionTypes.AUTH_LOGIN_SUCCESS:
       return {
         ...state,
-        loggedInUser: action.loggedInUser,
+        user: action.user,
         loading: true,
         error: null
       };
     case ActionTypes.AUTH_LOGIN_ERROR:
       return {
         ...state,
-        loggedInUser: null,
+        user: null,
         error: action.error,
         loading: false
       };

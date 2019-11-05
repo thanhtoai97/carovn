@@ -6,7 +6,7 @@ import authReducerRegister from '../modules/Register/reducers/index';
 
 const allReducers = combineReducers({
   game: gameReducer,
-  authReducerLogin,
+  login: authReducerLogin,
   authReducerRegister,
   settings: settingsReducer
 });

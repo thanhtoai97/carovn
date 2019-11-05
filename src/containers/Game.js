@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/sort-comp */
 /* eslint-disable no-shadow */
 /* eslint-disable class-methods-use-this */
@@ -13,137 +14,8 @@ import {
   timeTravel,
   sortHistory,
   newGame
-  // turnChangeAnimation
 } from '../acctions/gameAction';
 import { getBestMove, aiMove } from '../acctions/aiAction';
-
-/*
-function calculateWinwer(squares) {
-  for (let i = 0; i < 400; i += 1) {
-    if (
-      squares[i] &&
-      squares[i] === squares[i - 20] &&
-      squares[i] === squares[i - 40] &&
-      squares[i] === squares[i + 20] &&
-      squares[i] === squares[i + 40] &&
-      squares[i + 60] !== squares[i - 60]
-    ) {
-      return { player: squares[i], line: [i - 40, i - 20, i, i + 20, i + 40] };
-    }
-    if (
-      squares[i] &&
-      squares[i] === squares[i - 20] &&
-      squares[i] === squares[i - 40] &&
-      squares[i] === squares[i - 60] &&
-      squares[i] === squares[i - 80] &&
-      squares[i + 20] !== squares[i - 100]
-    ) {
-      return { player: squares[i], line: [i - 80, i - 60, i - 40, i - 20, i] };
-    }
-    if (
-      squares[i] &&
-      squares[i] === squares[i + 20] &&
-      squares[i] === squares[i + 40] &&
-      squares[i] === squares[i + 60] &&
-      squares[i] === squares[i + 80] &&
-      squares[i + 100] !== squares[i - 20]
-    ) {
-      return { player: squares[i], line: [i, i + 20, i + 40, i + 60, i + 80] };
-    }
-    if (
-      squares[i] &&
-      squares[i] === squares[i - 1] &&
-      squares[i] === squares[i - 2] &&
-      squares[i] === squares[i + 1] &&
-      squares[i] === squares[i + 2] &&
-      squares[i + 3] !== squares[i - 3]
-    ) {
-      return { player: squares[i], line: [i - 2, i - 1, i, i + 1, i + 2] };
-    }
-    if (
-      squares[i] &&
-      squares[i] === squares[i - 1] &&
-      squares[i] === squares[i - 2] &&
-      squares[i] === squares[i - 3] &&
-      squares[i] === squares[i - 4] &&
-      squares[i - 5] !== squares[i + 1]
-    ) {
-      return { player: squares[i], line: [i - 4, i - 3, i - 2, i - 1, i] };
-    }
-    if (
-      squares[i] &&
-      squares[i] === squares[i + 1] &&
-      squares[i] === squares[i + 2] &&
-      squares[i] === squares[i + 3] &&
-      squares[i] === squares[i + 4] &&
-      squares[i + 5] !== squares[i - 1]
-    ) {
-      return { player: squares[i], line: [i, i + 1, i + 2, i + 3, i + 4] };
-    }
-    if (
-      squares[i] &&
-      squares[i] === squares[i - 19] &&
-      squares[i] === squares[i - 38] &&
-      squares[i] === squares[i + 19] &&
-      squares[i] === squares[i + 38] &&
-      squares[i + 57] !== squares[i - 57]
-    ) {
-      return { player: squares[i], line: [i - 38, i - 19, i, i + 19, i + 38] };
-    }
-    if (
-      squares[i] &&
-      squares[i] === squares[i - 19] &&
-      squares[i] === squares[i - 38] &&
-      squares[i] === squares[i - 57] &&
-      squares[i] === squares[i - 76] &&
-      squares[i + 19] !== squares[i - 95]
-    ) {
-      return { player: squares[i], line: [i - 76, i - 57, i - 38, i - 19, i] };
-    }
-    if (
-      squares[i] &&
-      squares[i] === squares[i + 19] &&
-      squares[i] === squares[i + 38] &&
-      squares[i] === squares[i + 57] &&
-      squares[i] === squares[i + 76] &&
-      squares[i + 95] !== squares[i - 19]
-    ) {
-      return { player: squares[i], line: [i, i + 19, i + 38, i + 57, i + 76] };
-    }
-    if (
-      squares[i] &&
-      squares[i] === squares[i - 21] &&
-      squares[i] === squares[i - 42] &&
-      squares[i] === squares[i + 21] &&
-      squares[i] === squares[i + 42] &&
-      squares[i + 63] !== squares[i - 63]
-    ) {
-      return { player: squares[i], line: [i - 21, i - 42, i, i + 21, i + 42] };
-    }
-    if (
-      squares[i] &&
-      squares[i] === squares[i + 21] &&
-      squares[i] === squares[i + 42] &&
-      squares[i] === squares[i + 63] &&
-      squares[i] === squares[i + 84] &&
-      squares[i + 105] !== squares[i - 23]
-    ) {
-      return { player: squares[i], line: [i, i + 21, i + 42, i + 63, i + 84] };
-    }
-    if (
-      squares[i] &&
-      squares[i] === squares[i - 21] &&
-      squares[i] === squares[i - 42] &&
-      squares[i] === squares[i - 63] &&
-      squares[i] === squares[i - 84] &&
-      squares[i + 23] !== squares[i - 105]
-    ) {
-      return { player: squares[i], line: [i - 84, i - 63, i - 42, i - 21, i] };
-    }
-  }
-  return null;
-}
-*/
 
 function indicateVictory(squares) {
   const possibleStreaks = [
@@ -1403,6 +1275,7 @@ class Game extends React.Component {
       currentBoard
     } = this.props;
     const { playerStarts, versus, difficulty } = gameSettings;
+
     const board = currentBoard.slice();
     if (stepNumber === 0) {
       if (!playerStarts && xIsNext && versus === 'A') {
@@ -1416,13 +1289,13 @@ class Game extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { xIsNext, endOfGame, grid } = this.props;
+    const { xIsNext, grid } = this.props;
     const { playerStarts, versus, difficulty } = nextProps.gameSettings;
+
     const board = nextProps.currentBoard.slice();
 
     if (nextProps.stepNumber || nextProps.stepNumber === 0) {
-      if (!endOfGame && !playerStarts && xIsNext && versus === 'A') {
-        const { grid } = this.props;
+      if (!playerStarts && xIsNext && versus === 'A') {
         // if AI plays first (X)
         const bestMove = getBestMove(board, grid, xIsNext);
         const move = aiMove(bestMove, board, difficulty);
@@ -1431,7 +1304,7 @@ class Game extends React.Component {
           this.playerMove(move);
         }, 750);
       }
-      if (!endOfGame && playerStarts && !xIsNext && versus === 'A') {
+      if (playerStarts && !xIsNext && versus === 'A') {
         // if AI plays second (O)
         const bestMove = getBestMove(board, grid, xIsNext);
         const move = aiMove(bestMove, board, difficulty);
@@ -1450,7 +1323,7 @@ class Game extends React.Component {
     const moves = history.map((step, move) => {
       const desc = move ? `Go to move #${move}` : 'NEW GAME';
       return (
-        <li key={move.id}>
+        <li key={move}>
           <button type="button" onClick={() => this.timeTravel(move)}>
             {move === stepNumber ? <b>{desc}</b> : desc}
           </button>
@@ -1467,8 +1340,8 @@ class Game extends React.Component {
     const { newGame, grid } = this.props;
     return (
       <div className="game">
-        <div className="left_col_game">
-          <Link to="/">
+        <div className="game-info">
+          <Link to="/menu">
             <button type="button" className="exit_game">
               Main Menu
             </button>
@@ -1478,9 +1351,10 @@ class Game extends React.Component {
             onClick={() => newGame(grid)}
             className="exit_game"
           >
-            New Game
+            Reset
           </button>
         </div>
+        <div className="game-info"> </div>
         <div className="game-board">
           <Board
             winner={winner && winner.line}
@@ -1506,10 +1380,7 @@ const mapStateToProps = state => ({
   currentBoard: state.game.currentBoard,
   xIsNext: state.game.xIsNext,
   isDescending: state.game.isDescending,
-  stepNumber: state.game.stepNumber,
-  timeTraveled: state.game.timeTraveled,
-  showHistory: state.game.showHistory,
-  endOfGame: state.game.endOfGame
+  stepNumber: state.game.stepNumber
 });
 
 const matchDispatchToProps = dispatch => ({

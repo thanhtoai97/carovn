@@ -8,8 +8,7 @@ const authReducerRegister = (state = defaultState, action) => {
   switch (action.type) {
     case ActionTypes.AUTH_REGISTER_PENDING:
       return {
-        ...state,
-        registering: true
+        ...state
       };
     case ActionTypes.AUTH_REGISTER_SUCCESS:
       return {

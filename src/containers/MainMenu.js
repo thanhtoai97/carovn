@@ -7,6 +7,8 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { newGame } from '../acctions/gameAction';
 
+// import {login_Success} from '../modules/Login/reducers/index';
+
 class MainMenu extends Component {
   newGame() {
     const { newGame } = this.props;
@@ -14,33 +16,40 @@ class MainMenu extends Component {
   }
 
   render() {
-    const { grid, newGame } = this.props;
+    const { grid, newGame, user } = this.props;
     return (
       <div className="main_menu">
-        <h2>Welcome to Tic Tac Toe!</h2>
+        <h2>Welcome {user.name} to Tic Tac Toe!</h2>
+        <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+          <li className="nav-item dropdown">
+            <a
+              className="nav-link dropdown-toggle"
+              href="/#info"
+              id="navbardrop"
+              data-toggle="dropdown"
+            >
+              Update info
+            </a>
+          </li>
+        </nav>
         <Link to="/game">
           <button
             type="button"
             onClick={() => newGame(grid)}
             className="menu_button"
           >
-            Begin
+            Play Offline
           </button>
         </Link>
         <br />
-        <Link to="/register">
-          <button type="button" className="menu_button">
-            Register
-          </button>
-        </Link>
-        <Link to="/login">
-          <button type="button" className="menu_button">
-            Login
-          </button>
-        </Link>
         <Link to="/settings">
           <button type="button" className="menu_button">
-            Settings
+            Settings Offline
+          </button>
+        </Link>
+        <Link to="/online">
+          <button type="button" className="menu_button">
+            Play Online
           </button>
         </Link>
       </div>
@@ -49,7 +58,8 @@ class MainMenu extends Component {
 }
 
 const mapStateToProps = state => ({
-  grid: state.game.grid
+  grid: state.game.grid,
+  user: state.login.user
 });
 
 const matchDispatchToProps = dispatch => {

@@ -7,6 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
+import 'antd/dist/antd.css';
 import './style/index.css';
 import App from './containers/App';
 import * as serviceWorker from './serviceWorker';

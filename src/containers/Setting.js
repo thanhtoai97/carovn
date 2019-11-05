@@ -16,7 +16,6 @@ import SettingsTable from '../components/SettingTable';
 const Settings = props => {
   return (
     <div className="settings_page">
-      <h2>Settings:</h2>
       <div className="left_col_settings">
         <Link to="/">
           <button type="button" className="exit_settings">

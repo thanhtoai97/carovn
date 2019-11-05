@@ -1282,10 +1282,10 @@ export const gameReducer = (state = initialState, action) => {
         ...state,
         history: [
           {
-            squares: new Array(state.grid).fill(null)
+            squares: new Array(400).fill(null)
           }
         ],
-        currentBoard: new Array(state.grid).fill(null),
+        currentBoard: new Array(400).fill(null),
         stepNumber: 0,
         xIsNext: true,
         isDescending: true,

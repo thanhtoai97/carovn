@@ -2,7 +2,7 @@
 import axios from 'axios';
 import * as ActionsTypes from '../constants/actionsType';
 
-const apiURL = 'http://localhost:3002/users';
+const apiURL = 'http://localhost:5000/users';
 const client = axios.create({
   baseURL: apiURL,
   headers: {
@@ -10,9 +10,9 @@ const client = axios.create({
   }
 });
 
-const login_Success = loggedInUser => ({
+const login_Success = user => ({
   type: ActionsTypes.AUTH_LOGIN_SUCCESS,
-  loggedInUser
+  user
 });
 
 const login_Pending = () => ({
@@ -30,11 +30,12 @@ export const loginAsync = (email, password) => {
     client
       .post('/login', { email, password })
       .then(response => {
-        dispatch(login_Success(response.data));
-        localStorage.setItem('loggedInUser', JSON.stringify(response.data));
+        localStorage.setItem('user', JSON.stringify(email, password));
+        dispatch(login_Success(response.data.user));
       })
       .catch(error => {
         dispatch(login_Error(error));
+        window.location.href = '/';
       });
   };
 };
