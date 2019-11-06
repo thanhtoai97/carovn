@@ -39,7 +39,7 @@ class RegistrationForm extends React.Component {
         const { email } = values;
         const { password } = values;
 
-        const apiBaseUrl = 'http://localhost:5000/users/';
+        const apiBaseUrl = 'https://servercarovn.herokuapp.com/users/';
         const headers = {
           Accept: 'application/json',
           'Content-Type': 'application/json'
